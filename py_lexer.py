@@ -13,7 +13,7 @@ EPOCHS = 1
 
 in_l = layers.Input(shape=(CHUNK_SIZE, IN_SIZE), batch_size=BATCH_SIZE)
 l = in_l
-l = layers.SimpleRNN(1024, return_sequences=True, stateful=True, activation='softmax')(l) # , kernel_regularizer=regularizers.l1(1e-4)
+l = layers.SimpleRNN(INNER_SIZE, return_sequences=True, stateful=True, activation='softmax')(l) # , kernel_regularizer=regularizers.l1(1e-4)
 l = layers.TimeDistributed(layers.Dense(OUT_SIZE, activation='softmax'))(l)
 out_l = l
 model = models.Model(in_l, out_l)
